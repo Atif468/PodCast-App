@@ -1,4 +1,4 @@
-import SideList from '../components/sideList';
+import SideList from '../components/SideList';
 import VideoPlayer from '../components/VideoPlayer';
 const Home = () => {
   return (
