@@ -1,23 +1,22 @@
 function Welcome() {
-    return (
-      <div className="bg-black flex flex-row justify-center items-center gap-8 min-h-screen">
-        <div className="text-left text-white p-auto">
-          <h1 className="text-2xl">Welcome to</h1>
-          <i className="text-6xl font-bold block">PodCast.in</i>
-          <i>
-            Lorem ipsum dolor sit amet consectetur asimus sequi! Lorem ipsum
-            dolor, sit amet one a rem sint.
-          </i>
-        </div>
-        <div className="">
-          <div className="h-72 w-72 bg-white rounded-3xl">
-            <img src="" alt="" />
-            hcfv
-          </div>
+  return (
+    <div className="bg-black flex flex-row  items-center justify-around min-h-screen">
+      <div className="text-left text-white p-auto">
+        <i className="text-3xl">Welcome to</i>
+        <i className="text-8xl font-bold block">PodCast.in</i>
+        <i className="block">
+          Discover powerful podcasts and stories that resonate with your
+          passions.
+        </i>
+        <i> Join us in exploring a world of voices and insights.</i>
+      </div>
+      <div className="">
+        <div className="h-72 w-72 bg-white rounded-3xl overflow-hidden bg-cover">
+          <img src="../../public/cartoon-character-generated-by-Fotor-ai-art-creator.webp"/>
         </div>
       </div>
-    );
-  }
-  
-  export default Welcome;
-  
+    </div>
+  );
+}
+
+export default Welcome;
