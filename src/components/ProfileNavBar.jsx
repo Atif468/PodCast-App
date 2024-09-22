@@ -2,9 +2,9 @@ function ProfileNavBar() {
   return (
     <>
       <nav className="flex flex-row justify-around white border text-black text-2xl">
-        <a href="">Liked</a>
-        <a href="">PlayList</a>
-        <a href="">Your PodCast</a>
+        <button>Liked</button>
+        <button>PlayList</button>
+        <button>Your PodCast</button>
       </nav>
     </>
   );
