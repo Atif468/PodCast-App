@@ -108,14 +108,14 @@ function SideList() {
 
   return (
     <>
-      <div className="h-[100%] w-1/4 bg-slate-950 text-white border-r-2 overflow-auto touch-auto fixed ">
-        <div className="bg-slate-950 text-white">
-          <div className="flex justify-center h-9 sticky top-1 backdrop:backdrop-blur-sm">
+      <div className="h-[100%] w-1/4   text-white border-r-2 overflow-auto touch-auto fixed scroll-m-0">
+        <div className="bg-black text-white">
+          <div className="flex justify-center h-9 sticky top-2 backdrop:backdrop-blur-sm">
             <SearchBar />
           </div>
-          <div className="bg-slate-950 text-white">
+          <div className=" text-white">
             {data.map((d) => (
-              <div className="flex items-center my-2 p-2 border-b border-slate-800">
+              <div className="flex items-center my-2 p-2 w-[95%] rounded-3xl">
                 <img src={d.image} alt={d.songName} className="w-12 h-12 object-cover rounded-full border" />
                 <div className="ml-4">
                   <p className="text-lg font-semibold">{d.songName}</p>

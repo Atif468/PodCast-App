@@ -7,7 +7,11 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <img src="/logo.png" alt="PodCast Logo" className="h-8 w-8" />
-          <span className="text-white text-lg ml-2">PodCast.in</span>
+          <span className="text-white text-lg ml-2" style={{
+        backgroundImage: 'linear-gradient(0deg, #6678d9 13%, #6b1317 87%, #03371e 76%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+      }}>PodCast.in</span>
         </div>
         <div className="hidden md:flex space-x-6">
           <Link to="/" className="text-white">Home</Link>

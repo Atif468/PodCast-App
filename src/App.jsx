@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/NavBar';
-
+import Profile from './pages/Profile';
 import Home from './pages/Home';
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/Profile" element={<Profile />} />
             
           </Routes>
         </div>
