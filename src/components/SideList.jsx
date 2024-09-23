@@ -104,11 +104,9 @@ function SideList() {
     },
   ];
   
-
-
   return (
     <>
-      <div className="h-[100%] w-1/4   text-white border-r-2 overflow-auto touch-auto fixed scroll-m-0">
+      <div className="sidebar  h-[100%] w-1/4  text-white  overflow-auto touch-auto fixed scroll-m-0">
         <div className="bg-black text-white">
           <div className="flex justify-center h-9 sticky top-2 backdrop:backdrop-blur-sm">
             <SearchBar />
