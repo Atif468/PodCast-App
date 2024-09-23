@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
-import LandingPage from './pages/LandingPage'
+import LandingPage from './pages/LandingPage';
+import Login from './components/Login';
+
 function App() {
   return (
     <Router>
@@ -13,6 +15,7 @@ function App() {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/Profile" element={<Profile />} />
             

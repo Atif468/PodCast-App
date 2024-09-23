@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <nav className="bg-gray-800 p-4 sticky">
       <div className="container mx-auto flex justify-between items-center">
@@ -20,13 +21,22 @@ const Navbar = () => {
             PodCast.in
           </Link>
         </div>
-        <div className="hidden md:flex space-x-6">
-          <Link to="/Home" className="text-white">
-            Home
+        <div className="hidden md:flex space-x-6 text-white">
+        {isLogin ? (
+          <>
+            <Link to="/Home" className="text-white hover:underline">
+              Home
+            </Link>
+            <Link to="/Profile" className="text-white hover:underline">
+              Profile
+            </Link>
+          </>
+        ) : (
+          <Link to="/Login" className="text-white hover:underline">
+            Sign in/Sign up
           </Link>
-          <Link to="/Profile" className="text-white">
-            Profile
-          </Link>
+        )}
+          
         </div>
         <button className="md:hidden text-white">Menu</button>
       </div>

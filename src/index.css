@@ -1,16 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.sidebar::-webkit-scrollbar {
-    display: none;
-    visibility: hidden;
-  width: 7px;
-}
-.sidebar::-webkit-scrollbar-track {
-  /* background: rgba(84, 82, 80, 0); */
-}
-.sidebar:hover::-webkit-scrollbar-thumb {
-  /* background: linear-gradient(rgb(226, 11, 11) 20%, rgb(255, 40, 40)); */
-  /* border-radius: 10px; */
-}

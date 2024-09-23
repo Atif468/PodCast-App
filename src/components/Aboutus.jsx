@@ -1,11 +1,11 @@
 function Aboutus() {
     return (
       <>
-        <div className="bg-black text-white m-auto min-h-screen flex flex-col justify-center items-center p-6">
-          <h1 className="text-center text-5xl font-bold hover:scale-105 duration-700 mb-8">
+        <div className=" text-white m-auto min-h-screen flex flex-col justify-center items-center p-6">
+          <h1 className="text-center text-5xl font-bold hover:scale-110 duration-300 mb-8 z-50">
             About Us
           </h1>
-          <div className="max-w-4xl">
+          <div className="max-w-4xl z-50">
             <ul className="list-disc pl-8 space-y-6 text-xl leading-relaxed">
               <li>
                 <strong>Engaging Stories:</strong> Discover powerful podcasts
