@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 
 const UploadPodcast = () => {
   const [title, setTitle] = useState("");
@@ -8,6 +8,7 @@ const UploadPodcast = () => {
   const [audioFile, setAudioFile] = useState(null);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleFileChange = (event) => {
     setAudioFile(event.target.files[0]);
@@ -22,13 +23,24 @@ const UploadPodcast = () => {
     formData.append("audioFile", audioFile);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/podcasts/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:8080/api/podcasts/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       setSuccess(response.data.message);
       setError(null);
+
+      if (response.data.message === "Success") {
+        navigate("/Home");
+        setTitle("");
+        setAuthor("");
+        setAudioFile(null);
+      }
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");
       setSuccess("");
@@ -38,7 +50,9 @@ const UploadPodcast = () => {
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="w-full max-w-md bg-gray-800 p-8 space-y-6 rounded-lg shadow-lg">
-        <h2 className="text-center text-3xl font-extrabold text-white">Upload Podcast</h2>
+        <h2 className="text-center text-3xl font-extrabold text-white">
+          Upload Podcast
+        </h2>
 
         {error && <p className="text-red-500 text-center">{error}</p>}
         {success && <p className="text-green-500 text-center">{success}</p>}
@@ -46,7 +60,9 @@ const UploadPodcast = () => {
         <form onSubmit={handleSubmit} className="mt-8 space-y-4">
           <div className="rounded-md shadow-sm space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300">Title</label>
+              <label className="block text-sm font-medium text-gray-300">
+                Title
+              </label>
               <input
                 name="title"
                 type="text"
@@ -59,7 +75,9 @@ const UploadPodcast = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300">Author</label>
+              <label className="block text-sm font-medium text-gray-300">
+                Author
+              </label>
               <input
                 name="author"
                 type="text"
@@ -72,7 +90,9 @@ const UploadPodcast = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300">Audio File</label>
+              <label className="block text-sm font-medium text-gray-300">
+                Audio File
+              </label>
               <input
                 name="audioFile"
                 type="file"

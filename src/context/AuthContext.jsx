@@ -1,9 +1,9 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from "react";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = () => {
     setIsLoggedIn(true);
@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Corrected function name from Authen to useAuth
 export const useAuth = () => {
   return useContext(AuthContext);
 };

@@ -1,30 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from '../context/AuthContext';
-
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const { login } = useAuth();
-  // const validateEmail = (email) => {
-  //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   return regex.test(email);
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-  
+
     try {
       setLoading(true);
-  
-      const response = await axios.post(
-        "http://localhost:8080/api/login",
+
+      const response = await axios.post("http://localhost:8080/api/user/login",
         { email, password },
         {
           headers: {
@@ -32,21 +26,22 @@ function Login() {
           },
         }
       );
-  
-      // No need to call response.json() since axios automatically parses JSON
+
       const data = response.data;
-  
+
       if (response.status === 200) {
-        // Store token and navigate to the home page on successful login
-        localStorage.setItem("token", data.token); // Assuming token is returned
+        localStorage.setItem("token", data.token);
         login();
         navigate("/Home");
       } else {
         setError(data.message || "Login failed. Please try again.");
       }
     } catch (err) {
-      console.error("Login error: ", err); // Log error details
-      setError(err.response?.data?.error || "An error occurred. Please try again later.");
+      console.error("Login error: ", err);
+      setError(
+        err.response?.data?.error ||
+          "An error occurred. Please try again later."
+      );
     } finally {
       setLoading(false);
     }

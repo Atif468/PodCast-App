@@ -9,13 +9,12 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    // Basic validation
     if (!name) {
       setError("Please enter your name.");
       return;
@@ -32,9 +31,8 @@ function Signup() {
 
     try {
       setLoading(true);
-      // Correct API URL
       const response = await axios.post(
-        "http://localhost:8080/api/signup",
+        "http://localhost:8080/api/user/signup",
         { name, email, password },
         {
           headers: {
@@ -44,7 +42,6 @@ function Signup() {
       );
 
       if (response.status === 201) {
-        // Navigate to the login page after successful signup
         navigate("/Login");
       } else {
         setError(response.data.message || "Signup failed. Please try again.");

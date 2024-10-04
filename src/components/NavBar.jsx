@@ -6,7 +6,7 @@ import { FaRegUser } from "react-icons/fa";
 import UploadPodcast from "./UploadPodcast";
 const Navbar = () => {
   const { isLoggedIn } = useAuth();
-  
+
   return (
     <nav className="bg-gray-800 p-4 sticky">
       <div className="container mx-auto flex justify-between items-center">
@@ -16,7 +16,8 @@ const Navbar = () => {
             to="/"
             className="text-white text-3xl ml-2"
             style={{
-              backgroundImage: "linear-gradient(0deg, #6678d9 13%, #6b1317 87%, #03371e 76%)",
+              backgroundImage:
+                "linear-gradient(0deg, #6678d9 13%, #6b1317 87%, #03371e 76%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
@@ -24,7 +25,7 @@ const Navbar = () => {
             PodCast.in
           </Link>
         </div>
-        
+
         <div className="hidden md:flex space-x-6 text-white">
           {isLoggedIn ? (
             <div className="text-center flex gap-5 justify-center align-middle">
@@ -33,10 +34,18 @@ const Navbar = () => {
                   <IoMdAddCircleOutline aria-label="Add Podcast" />
                 </div>
               </Link>
-              <Link to="/Home" className="text-white hover:underline" data-aos="fade-top-right">
+              <Link
+                to="/Home"
+                className="text-white hover:underline"
+                data-aos="fade-top-right"
+              >
                 <h1>Home</h1>
               </Link>
-              <Link to="/Profile" className="text-white hover:underline" data-aos="fade-top-right">
+              <Link
+                to="/Profile"
+                className="text-white hover:underline"
+                data-aos="fade-top-right"
+              >
                 <div className="flex items-center p-2 hover:bg-gray-200 rounded transition duration-300">
                   <FaRegUser className="text-xl" aria-label="User Profile" />
                 </div>

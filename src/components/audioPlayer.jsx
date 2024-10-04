@@ -1,15 +1,21 @@
-import React from 'react';
+import React from "react";
 
-const VideoPlayer = () => {
+const VideoPlayer = ({ podcast }) => {
+  if (!podcast) {
+    return (
+      <div className="text-center text-white">Select a podcast to play</div>
+    );
+  }
+
   return (
-    <div className="bg-slate-900 h-full text-white p-10">
-      <img src="https://static.vecteezy.com/system/resources/previews/001/937/625/original/online-education-application-learning-worldwide-on-phone-mobile-website-background-social-distance-concept-the-classroom-training-course-library-illustration-flat-design-vector.jpg" alt="" className='h-1/2 w-1/2 bg-white m-auto bg-cover rounded-lg' />
-      <audio src="./sample-3s.mp3" className='m-auto' controls></audio>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ea
-        earum ad debitis impedit atque nobis labore quasi iure ipsum autem
-        possimus beatae ipsam dolores, optio corrupti accusamus nesciunt quidem.
-      </p>
+    <div className="player bg-gray-900 text-white h-full flex items-center justify-center">
+      <div className="text-center">
+        <h2 className="text-2xl mb-4">{podcast.title}</h2>
+        <p className="text-sm text-gray-400 mb-4">{podcast.author}</p>
+        <audio controls src={podcast.audioUrl} className="w-full">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
     </div>
   );
 };

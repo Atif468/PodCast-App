@@ -24,7 +24,7 @@ const Input = () => {
             />
             <div id="input-mask" />
             <div id="pink-mask" />
-           
+
             <div id="search-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ const StyledWrapper = styled.div`
     border-radius: 12px;
     filter: blur(3px);
   }
-.input {
+  .input {
     background-color: black;
     border: none;
     width: 302px;
@@ -90,8 +90,7 @@ const StyledWrapper = styled.div`
     padding-inline: 59px;
     font-size: 18px;
     backdrop-filter: blur(10px); /* Add backdrop filter for background blur */
-}
-
+  }
 
   #poda {
     display: flex;

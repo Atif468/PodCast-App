@@ -5,15 +5,13 @@ import { CardSpotlight } from "../components/ui/card-spotlight";
 function LandingPage() {
   return (
     <>
-    <div className="">
-     <CardSpotlight className="min-h-screen">
-      <Welcome />
-      <Aboutus />
-      <Footer />
-
-    </CardSpotlight>
-    </div>
-
+      <div className="">
+        <CardSpotlight className="min-h-screen">
+          <Welcome />
+          <Aboutus />
+          <Footer />
+        </CardSpotlight>
+      </div>
     </>
   );
 }

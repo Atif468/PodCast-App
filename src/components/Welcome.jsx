@@ -9,7 +9,10 @@ function Welcome() {
             Discover powerful podcasts and stories that resonate with your
             passions.
           </i>
-          <i className="z-50 "> Join us in exploring a world of voices and insights.</i>
+          <i className="z-50 ">
+            {" "}
+            Join us in exploring a world of voices and insights.
+          </i>
         </div>
 
         <div className="z-50 h-72 w-72 bg-white rounded-3xl overflow-hidden bg-cover">

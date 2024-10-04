@@ -36,11 +36,14 @@ function Profile() {
           throw new Error("User not authenticated");
         }
 
-        const response = await axios.get("http://localhost:8080/api/userinfo", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "http://localhost:8080/api/user/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         setUserData(response.data);
       } catch (err) {
