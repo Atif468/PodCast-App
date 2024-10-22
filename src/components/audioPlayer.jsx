@@ -5,14 +5,17 @@ import { GoDownload } from "react-icons/go";
 import { CiMenuKebab } from "react-icons/ci";
 import { AiFillLike } from "react-icons/ai";
 import axios from "axios";
-
 const AudioPlayer = ({ podcast }) => {
+  if (!podcast) {
+    return <div>Loading...</div>; 
+  }
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [likes, setLikes] = useState(podcast.likes);
-  const [views, setViews] = useState(podcast.views);
-  const [isLiked, setIsLiked] = useState(false); // Track if the user has liked the podcast
+  const [likes, setLikes] = useState(podcast.likes || 0); 
+  const [views, setViews] = useState(podcast.views || 0);
+  const [isLiked, setIsLiked] = useState(false);
 
   const audioRef = useRef(null);
 
@@ -24,7 +27,7 @@ const AudioPlayer = ({ podcast }) => {
 
   const incrementViews = async () => {
     try {
-      const response = await axios.put(`/api/podcast/${podcast._id}/views`);
+      const response = await axios.patch(`/api/podcast/${podcast._id}/views`);
       setViews(response.data.views);
     } catch (error) {
       console.error("Error incrementing views", error);
@@ -61,13 +64,26 @@ const AudioPlayer = ({ podcast }) => {
 
   const toggleLike = async () => {
     try {
-      const response = await axios.put(`/api/podcast/${podcast._id}/like`);
+      const token = localStorage.getItem('token'); 
+      if (!token) {
+        console.error("No token available");
+        return;
+      }
+  
+      const response = await axios.patch(`http://localhost:8080/api/podcasts/likes/${podcast._id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      });
+      
+  
       setLikes(response.data.likes);
       setIsLiked(!isLiked);
     } catch (error) {
       console.error("Error toggling like", error);
     }
   };
+  
 
   return (
     <div className="player bg-gray-900 text-white h-full flex flex-col items-center justify-center">
