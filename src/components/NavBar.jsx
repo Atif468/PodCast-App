@@ -3,53 +3,31 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
-import UploadPodcast from "./UploadPodcast";
+
 const Navbar = () => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, logout } = useAuth();
 
   return (
     <nav className="bg-gray-800 p-4 sticky">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <img src="/logo.png" alt="PodCast Logo" className="h-8 w-8" />
-          <Link
-            to="/"
-            className="text-white text-3xl ml-2"
-            style={{
-              backgroundImage:
-                "linear-gradient(0deg, #6678d9 13%, #6b1317 87%, #03371e 76%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
+          <Link to="/" className="text-white text-3xl ml-2">
             PodCast.in
           </Link>
         </div>
 
         <div className="hidden md:flex space-x-6 text-white">
           {isLoggedIn ? (
-            <div className="text-center flex gap-5 justify-center align-middle">
+            <div className="flex gap-5">
               <Link to="/UploadPodcast">
-                <div className="flex items-center p-2 hover:bg-gray-200 rounded transition duration-300">
-                  <IoMdAddCircleOutline aria-label="Add Podcast" />
-                </div>
+                <IoMdAddCircleOutline aria-label="Add Podcast" />
               </Link>
-              <Link
-                to="/Home"
-                className="text-white hover:underline"
-                data-aos="fade-top-right"
-              >
-                <h1>Home</h1>
+              <Link to="/Home">Home</Link>
+              <Link to="/Profile">
+                <FaRegUser aria-label="User Profile" />
               </Link>
-              <Link
-                to="/Profile"
-                className="text-white hover:underline"
-                data-aos="fade-top-right"
-              >
-                <div className="flex items-center p-2 hover:bg-gray-200 rounded transition duration-300">
-                  <FaRegUser className="text-xl" aria-label="User Profile" />
-                </div>
-              </Link>
+              <button onClick={logout} className="text-white">Logout</button>
             </div>
           ) : (
             <Link to="/Login" className="text-white hover:underline">
@@ -57,6 +35,7 @@ const Navbar = () => {
             </Link>
           )}
         </div>
+        
         <button className="md:hidden text-white">Menu</button>
       </div>
     </nav>

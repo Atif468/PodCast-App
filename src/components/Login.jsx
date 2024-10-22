@@ -18,24 +18,28 @@ function Login() {
     try {
       setLoading(true);
 
-      const response = await axios.post("http://localhost:8080/api/user/login",
+      const response = await axios.post("http://localhost:8080/api/user/login", 
         { email, password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+        { headers: { "Content-Type": "application/json" } }
+    );
+    
+    console.log("Server response:", response);  
+    
 
-      const data = response.data;
+    const { data } = response;
 
-      if (response.status === 200) {
-        localStorage.setItem("token", data.token);
-        login();
+    if (data && data.token) {
+        console.log("Token:", data.token);  
+        await localStorage.setItem("token", data.token);  
+        console.log("Token saved in localStorage:", localStorage.getItem("token"));  // Retrieve and log token to check
+
+        // login();  
         navigate("/Home");
-      } else {
-        setError(data.message || "Login failed. Please try again.");
-      }
+    } else {
+        console.error("Token not found in response data.");
+        setError("Login failed. Token not received.");
+    }
+    
     } catch (err) {
       console.error("Login error: ", err);
       setError(

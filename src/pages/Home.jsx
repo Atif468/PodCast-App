@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SideList from "../components/SideList";
-import VideoPlayer from "../components/audioPlayer";
+import AudioPlayer from "../components/audioPlayer";
 
 const Home = () => {
   const [currentPodcast, setCurrentPodcast] = useState(null);
@@ -11,7 +11,7 @@ const Home = () => {
         <SideList setCurrentPodcast={setCurrentPodcast} />
       </section>
       <section className="h-[100%] w-3/4 fixed right-0 overflow-auto touch-auto">
-        <VideoPlayer podcast={currentPodcast} />
+        <AudioPlayer podcast={currentPodcast} />
       </section>
     </>
   );

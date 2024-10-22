@@ -43,7 +43,7 @@ function SideList({ setCurrentPodcast }) {
               onClick={() => setCurrentPodcast(podcast)}
             >
               <img
-                src="../../public/cartoon-character-generated-by-Fotor-ai-art-creator.webp"
+                src={podcast.imageUrl}
                 className="w-12 h-12 object-cover rounded-full border"
               />
               <div className="ml-4">

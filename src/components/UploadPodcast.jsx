@@ -1,26 +1,37 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import { Link, useNavigate } from "react-router-dom";
 
 const UploadPodcast = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [audioFile, setAudioFile] = useState(null);
+  const [imageFile, setImageFile] = useState(null); // State for image file
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  const handleFileChange = (event) => {
+  const handleAudioChange = (event) => {
     setAudioFile(event.target.files[0]);
+  };
+
+  const handleImageChange = (event) => {
+    setImageFile(event.target.files[0]);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (!audioFile || !imageFile) {
+      setError("Both audio and image files are required");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("author", author);
     formData.append("audioFile", audioFile);
+    formData.append("imageFile", imageFile); // Append image file
 
     try {
       const response = await axios.post(
@@ -35,13 +46,15 @@ const UploadPodcast = () => {
       setSuccess(response.data.message);
       setError(null);
 
-      if (response.data.message === "Success") {
+      if (response.data.message === "Podcast uploaded successfully") {
         navigate("/Home");
         setTitle("");
         setAuthor("");
         setAudioFile(null);
+        setImageFile(null);
       }
     } catch (err) {
+      console.log(err);
       setError(err.response?.data?.message || "An error occurred");
       setSuccess("");
     }
@@ -57,7 +70,11 @@ const UploadPodcast = () => {
         {error && <p className="text-red-500 text-center">{error}</p>}
         {success && <p className="text-green-500 text-center">{success}</p>}
 
-        <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 space-y-4"
+          enctype="multipart/form-data"
+        >
           <div className="rounded-md shadow-sm space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-300">
@@ -97,7 +114,21 @@ const UploadPodcast = () => {
                 name="audioFile"
                 type="file"
                 accept="audio/*"
-                onChange={handleFileChange}
+                onChange={handleAudioChange}
+                required
+                className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-300">
+                Image File
+              </label>
+              <input
+                name="imageFile"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
                 required
                 className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
