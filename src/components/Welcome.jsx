@@ -4,7 +4,7 @@ function Welcome() {
       <div className="flex flex-row  items-center justify-around min-h-screen">
         <div className="z-50 text-left text-white p-auto">
           <i className="text-3xl">Welcome to</i>
-          <i className="text-8xl font-bold block">PodCast.in</i>
+          <i className="text-8xl font-bold block"><span>PodCast.</span><span className="opacity-35">in</span></i>
           <i className="block">
             Discover powerful podcasts and stories that resonate with your
             passions.

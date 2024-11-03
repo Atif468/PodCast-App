@@ -4,10 +4,15 @@ import { MdMotionPhotosPaused, MdPlayArrow } from "react-icons/md";
 import { GoDownload } from "react-icons/go";
 import { CiMenuKebab } from "react-icons/ci";
 import { AiFillLike } from "react-icons/ai";
+import { MdOutlineLibraryAdd } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 import axios from "axios";
+
 const AudioPlayer = ({ podcast }) => {
   if (!podcast) {
-    return <div>Loading...</div>; 
+    return <div>Click any podcast to listen</div>;
   }
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -20,7 +25,7 @@ const AudioPlayer = ({ podcast }) => {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    if (isPlaying) {
+    if (isPlaying && views === podcast.views) {
       incrementViews();
     }
   }, [isPlaying]);
@@ -69,24 +74,48 @@ const AudioPlayer = ({ podcast }) => {
         console.error("No token available");
         return;
       }
-  
-      const response = await axios.patch(`http://localhost:8080/api/podcasts/likes/${podcast._id}`, {}, {
+
+      const response = await axios.patch(`http://localhost:8080/api/podcasts/likes/${podcast._id}`, {
         headers: {
           Authorization: `Bearer ${token}`, 
         },
       });
       
-  
       setLikes(response.data.likes);
       setIsLiked(!isLiked);
     } catch (error) {
       console.error("Error toggling like", error);
     }
   };
-  
+
+  const addtoPlayList = async () => {
+    try {
+      const token = localStorage.getItem('token'); 
+      if (!token) {
+        console.error("No token available");
+        return;
+      }
+
+      const response = await axios.patch(
+        `http://localhost:8080/api/podcasts/add-to-playlist/${podcast._id}`, 
+        {}, 
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success("Podcast added to your playlist!"); // Show success notification
+      }
+    } catch (error) {
+      console.error("Error adding podcast to playlist", error);
+      toast.error("Failed to add podcast to playlist"); // Show error notification
+    }
+  };
 
   return (
     <div className="player bg-gray-900 text-white h-full flex flex-col items-center justify-center">
+      <ToastContainer /> {/* Toast container for notifications */}
       <div className="text-center">
         <h2 className="text-2xl mb-4">{podcast.title}</h2>
         <img
@@ -125,6 +154,9 @@ const AudioPlayer = ({ podcast }) => {
           <GoDownload className="h-10 w-10 hover:cursor-pointer" />
         </a>
         <CiMenuKebab className="h-10 w-10 hover:cursor-pointer" />
+        
+        <MdOutlineLibraryAdd className="h-10 w-10 hover:cursor-pointer" 
+        onClick={addtoPlayList}/>
       </div>
 
       <div className="w-full flex items-center mt-4 px-10">
