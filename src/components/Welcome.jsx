@@ -1,10 +1,15 @@
+import Slider from "./swiper.jsx";
+
 function Welcome() {
   return (
     <>
       <div className="flex flex-row  items-center justify-around min-h-screen">
         <div className="z-50 text-left text-white p-auto">
           <i className="text-3xl">Welcome to</i>
-          <i className="text-8xl font-bold block"><span>PodCast.</span><span className="opacity-35">in</span></i>
+          <i className="text-8xl font-bold block">
+            <span>PodCast.</span>
+            <span className="opacity-35">in</span>
+          </i>
           <i className="block">
             Discover powerful podcasts and stories that resonate with your
             passions.
@@ -15,8 +20,12 @@ function Welcome() {
           </i>
         </div>
 
-        <div className="z-50 h-72 w-72 bg-white rounded-3xl overflow-hidden bg-cover">
+        {/* <div className="z-50 h-72 w-72 bg-white rounded-3xl overflow-hidden bg-cover">
           <img src="../../public/cartoon-character-generated-by-Fotor-ai-art-creator.webp" />
+        </div>
+         */}
+        <div className="h-96 w-96 bg-black">
+          <Slider />
         </div>
       </div>
     </>

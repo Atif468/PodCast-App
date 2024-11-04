@@ -6,7 +6,7 @@ const UploadPodcast = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [audioFile, setAudioFile] = useState(null);
-  const [imageFile, setImageFile] = useState(null); // State for image file
+  const [imageFile, setImageFile] = useState(null);  
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
@@ -21,31 +21,34 @@ const UploadPodcast = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     if (!audioFile || !imageFile) {
       setError("Both audio and image files are required");
       return;
     }
-
+  
     const formData = new FormData();
     formData.append("title", title);
     formData.append("author", author);
     formData.append("audioFile", audioFile);
-    formData.append("imageFile", imageFile); // Append image file
-
+    formData.append("imageFile", imageFile);
+  
     try {
+      const token = localStorage.getItem("token");  
       const response = await axios.post(
         "http://localhost:8080/api/podcasts/upload",
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`, 
           },
         }
       );
+  
       setSuccess(response.data.message);
       setError(null);
-
+  
       if (response.data.message === "Podcast uploaded successfully") {
         navigate("/Home");
         setTitle("");
