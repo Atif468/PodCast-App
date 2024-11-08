@@ -12,7 +12,7 @@ function Profile() {
   const getdata = async (podcastId) => {
     try {
       const result = await axios.get(
-        `http://localhost:8080/api/podcasts/Podcast/${podcastId}`
+        `https://podcastapp-back-end.onrender.com/api/podcasts/Podcast/${podcastId}`
       );
       return result.data;
     } catch (err) {
@@ -31,7 +31,7 @@ function Profile() {
 
         // Fetch user info
         const response = await axios.get(
-          "http://localhost:8080/api/user/userinfo",
+          "https://podcastapp-back-end.onrender.com/api/user/userinfo",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ function Profile() {
           }
         );
         setUserData(response.data.user);
-
+        console.log(response.data.user);
         if (response.data.user.likedPodcasts) {
           const podcastsData = await Promise.all(
             response.data.user.likedPodcasts.map((podcastId) =>
@@ -152,7 +152,6 @@ function Profile() {
                 <p>Views: {podcast.views}</p>
               </div>
             </div>
-            
           ))}
         </div>
       ) : section === "liked" ? (

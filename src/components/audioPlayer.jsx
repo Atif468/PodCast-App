@@ -7,7 +7,6 @@ import { AiFillLike } from "react-icons/ai";
 import { MdOutlineLibraryAdd } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
 import axios from "axios";
 
 const AudioPlayer = ({ podcast }) => {
@@ -18,7 +17,7 @@ const AudioPlayer = ({ podcast }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [likes, setLikes] = useState(podcast.likes || 0); 
+  const [likes, setLikes] = useState(podcast.likes || 0);
   const [views, setViews] = useState(podcast.views || 0);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -29,15 +28,6 @@ const AudioPlayer = ({ podcast }) => {
       incrementViews();
     }
   }, [isPlaying]);
-
-  const incrementViews = async () => {
-    try {
-      const response = await axios.patch(`/api/podcast/${podcast._id}/views`);
-      setViews(response.data.views);
-    } catch (error) {
-      console.error("Error incrementing views", error);
-    }
-  };
 
   const togglePlayPause = () => {
     if (isPlaying) {
@@ -69,18 +59,22 @@ const AudioPlayer = ({ podcast }) => {
 
   const toggleLike = async () => {
     try {
-      const token = localStorage.getItem('token'); 
+      const token = localStorage.getItem('token');
       if (!token) {
         console.error("No token available");
         return;
       }
 
-      const response = await axios.patch(`http://localhost:8080/api/podcasts/likes/${podcast._id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`, 
-        },
-      });
-      
+      const response = await axios.patch(
+        `http://localhost:8080/api/podcasts/likes/${podcast._id}`,
+        {}, // Pass an empty object for the request body
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
       setLikes(response.data.likes);
       setIsLiked(!isLiked);
     } catch (error) {
@@ -90,15 +84,15 @@ const AudioPlayer = ({ podcast }) => {
 
   const addtoPlayList = async () => {
     try {
-      const token = localStorage.getItem('token'); 
+      const token = localStorage.getItem('token');
       if (!token) {
         console.error("No token available");
         return;
       }
 
       const response = await axios.patch(
-        `http://localhost:8080/api/podcasts/add-to-playlist/${podcast._id}`, 
-        {}, 
+        `https://podcastapp-back-end.onrender.com/api/podcasts/add-to-playlist/${podcast._id}`,
+        {},
         {
           headers: { Authorization: `Bearer ${token}` },
         }

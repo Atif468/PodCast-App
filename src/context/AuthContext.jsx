@@ -10,8 +10,7 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       setIsLoggedIn(true);
     }
-  }, [isLoggedIn]);
-
+  }, []);
   const login = () => {
     setIsLoggedIn(true);
   };

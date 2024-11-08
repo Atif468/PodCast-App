@@ -3,11 +3,12 @@ import SearchBar from "./SearchBar";
 
 function SideList({ setCurrentPodcast }) {
   const [podcasts, setPodcasts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/podcasts/data");
+        const response = await fetch("https://podcastapp-back-end.onrender.com/api/podcasts/data");
         const result = await response.json();
 
         if (Array.isArray(result.data)) {
@@ -25,18 +26,20 @@ function SideList({ setCurrentPodcast }) {
     fetchPodcasts();
   }, []);
 
-  if (!Array.isArray(podcasts)) {
-    return <div className="text-white">No podcasts available</div>;
-  }
+  const filteredPodcasts = podcasts.filter((podcast) =>
+    podcast.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    podcast.author.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="sidebar bg-black h-[100%] w-1/4 text-white overflow-auto touch-auto fixed">
       <div className="bg-black text-white">
         <div className="flex justify-center h-12 p-2 sticky top-2 backdrop-blur-sm">
-          <SearchBar />
+          <SearchBar onSearchChange={setSearchQuery} />
         </div>
+        <hr className="bg-white" />
         <div className="text-white">
-          {podcasts.map((podcast) => (
+          {filteredPodcasts.map((podcast) => (
             <div
               className="flex items-center my-2 p-2 w-[95%] rounded-3xl bg-gray-800 hover:bg-gray-700 cursor-pointer"
               key={podcast._id}

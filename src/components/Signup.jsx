@@ -32,7 +32,7 @@ function Signup() {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:8080/api/user/signup",
+        "https://podcastapp-back-end.onrender.com/api/user/signup",
         { name, email, password },
         {
           headers: {

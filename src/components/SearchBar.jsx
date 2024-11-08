@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Input = () => {
+const Input = ({ onSearchChange }) => {
   return (
     <StyledWrapper>
       <>
@@ -17,10 +17,11 @@ const Input = () => {
 
           <div id="main">
             <input
-              placeholder="Search..."
+              placeholder="Search podcasts..."
               type="text"
               name="text"
               className="input"
+              onChange={(e) => onSearchChange(e.target.value)}
             />
             <div id="input-mask" />
             <div id="pink-mask" />

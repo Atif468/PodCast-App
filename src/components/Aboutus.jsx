@@ -1,12 +1,12 @@
 function Aboutus() {
   return (
     <>
-      <div className=" text-white m-auto min-h-screen flex flex-col justify-center items-center p-6">
-        <h1 className="text-center text-5xl font-bold hover:scale-110 duration-300 mb-8 z-50">
+      <div className="text-white m-auto min-h-screen flex flex-col justify-center items-center p-6">
+        <h1 className="text-center text-3xl md:text-5xl font-bold hover:scale-110 duration-300 mb-8 z-10">
           About Us
         </h1>
-        <div className="max-w-4xl z-50">
-          <ul className="list-disc pl-8 space-y-6 text-xl leading-relaxed">
+        <div className="max-w-2xl lg:max-w-4xl z-10">
+          <ul className="list-disc pl-6 md:pl-8 space-y-4 md:space-y-6 text-lg md:text-xl leading-relaxed">
             <li>
               <strong>Engaging Stories:</strong> Discover powerful podcasts
               covering a wide range of topics from creators worldwide.

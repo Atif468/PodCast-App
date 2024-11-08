@@ -18,7 +18,7 @@ function Login() {
     try {
       setLoading(true);
 
-      const response = await axios.post("http://localhost:8080/api/user/login", 
+      const response = await axios.post("https://podcastapp-back-end.onrender.com/api/user/login", 
         { email, password },
         { headers: { "Content-Type": "application/json" } }
     );
@@ -31,9 +31,9 @@ function Login() {
     if (data && data.token) {
         console.log("Token:", data.token);  
         await localStorage.setItem("token", data.token);  
-        console.log("Token saved in localStorage:", localStorage.getItem("token"));  // Retrieve and log token to check
+        console.log("Token saved in localStorage:", localStorage.getItem("token"));
 
-        // login();  
+        login();  
         navigate("/Home");
     } else {
         console.error("Token not found in response data.");

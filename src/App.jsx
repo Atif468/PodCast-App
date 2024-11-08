@@ -19,10 +19,10 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
+      <div className="min-h-screen flex flex-col" >
 
         <div className="flex-grow">
+        <Navbar />
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/Login" element={<Login />} />
