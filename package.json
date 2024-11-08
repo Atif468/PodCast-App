@@ -11,11 +11,12 @@
   },
   "dependencies": {
     "@react-three/fiber": "^8.17.7",
+    "@tabler/icons-react": "^3.21.0",
     "@types/three": "^0.168.0",
     "aos": "^2.3.4",
     "axios": "^1.7.7",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.5.6",
+    "framer-motion": "^11.11.11",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -24,7 +25,7 @@
     "react-toastify": "^10.0.6",
     "styled-components": "^6.1.13",
     "swiper": "^11.1.14",
-    "tailwind-merge": "^2.5.2",
+    "tailwind-merge": "^2.5.4",
     "three": "^0.168.0"
   },
   "devDependencies": {

@@ -32,7 +32,7 @@ function SideList({ setCurrentPodcast }) {
   );
 
   return (
-    <div className="sidebar bg-black w-full h-full text-white overflow-auto p-4">
+    <div className="sidebar bg-black w-full h-full text-white overflow-auto p-4 border-r-2">
       <div className="bg-black text-white">
         <div className="flex justify-center h-12 p-2 sticky top-0 backdrop-blur-sm">
           <SearchBar onSearchChange={setSearchQuery} />
