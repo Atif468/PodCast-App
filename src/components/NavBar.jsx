@@ -5,7 +5,7 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 
 const Navbar = () => {
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, logout } = useAuth(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
