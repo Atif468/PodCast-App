@@ -27,7 +27,7 @@ function Login() {
 
       if (data && data.token) {
         await localStorage.setItem("token", data.token);
-        login();
+        await login();
         navigate("/Home");
       } else {
         setError("Login failed. Token not received.");

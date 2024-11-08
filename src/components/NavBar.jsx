@@ -5,7 +5,7 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 
 const Navbar = () => {
-  const { isLoggedIn, logout } = useAuth(false);
+  const { isLoggedIn, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -18,7 +18,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6 text-white">
           {isLoggedIn ? (
             <div className="flex gap-5">
