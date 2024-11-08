@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-800 p-4 sticky top-0 z-50 ">
+    <nav className="bg-black h-20 p-4 sticky top-0 z-50 ">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <img src="/logo.png" alt="PodCast Logo" className="h-8 w-8" />

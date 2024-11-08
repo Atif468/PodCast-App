@@ -7,10 +7,10 @@ const Home = () => {
 
   return (
     <div className="flex flex-col md:flex-row h-full">
-      <section className="w-full md:w-1/4 overflow-auto">
+      <section className="w-full md:w-1/4 h-full">
         <SideList setCurrentPodcast={setCurrentPodcast} />
       </section>
-      <section className="w-full md:w-3/4 overflow-auto">
+      <section className="w-full md:w-3/4 h-full">
         <AudioPlayer podcast={currentPodcast} />
       </section>
     </div>

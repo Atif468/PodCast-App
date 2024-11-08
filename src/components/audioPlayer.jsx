@@ -6,7 +6,7 @@ import { CiMenuKebab } from "react-icons/ci";
 import { AiFillLike } from "react-icons/ai";
 import { MdOutlineLibraryAdd } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
-import { BackgroundBeamsWithCollision } from "./ui/background-beams-with-collision.jsx";
+import { BackgroundBeamsWithCollision } from "./ui/background-beams-with-collision";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
@@ -106,7 +106,7 @@ const AudioPlayer = ({ podcast }) => {
 
   return (
     <BackgroundBeamsWithCollision>
-      <div className="player z-50 text-white h-full flex flex-col items-center justify-center p-4">
+      <div className="player text-white h-[calc(100vh-4rem)] flex flex-col items-center justify-center p-4">
         <ToastContainer />
         <div className="text-center mb-4">
           <h2 className="text-2xl">{podcast.title}</h2>
