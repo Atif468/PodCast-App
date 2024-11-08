@@ -7,16 +7,15 @@ function Whypodcast() {
 
   const Getstart = () => {
     if (isLoggedIn) {
-      navigate("/Home"); // Redirect to home if logged in
+      navigate("/Home"); 
     } else {
-      navigate("/Login"); // Redirect to login if not logged in
+      navigate("/Login");  
     }
   };
 
   return (
     <div className="flex flex-col lg:flex-row gap-12 text-white p-8 z-50">
-      {/* Left Side - Image */}
-      <div className="w-full lg:w-[50%] h-auto lg:h-[50%] z-10 mb-8 lg:mb-0">
+       <div className="w-full lg:w-[50%] h-auto lg:h-[50%] z-10 mb-8 lg:mb-0">
         <img
           src="/img/podcaster-87.png"
           alt="none"
@@ -24,8 +23,7 @@ function Whypodcast() {
         />
       </div>
 
-      {/* Right Side - Text */}
-      <div className="flex flex-col justify-center z-10 text-center lg:text-left">
+       <div className="flex flex-col justify-center z-10 text-center lg:text-left">
         <h2 className="text-3xl lg:text-4xl font-semibold">
           Your <span className="text-[#d959ff]">Podcast</span> Hub
         </h2>

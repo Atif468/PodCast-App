@@ -24,6 +24,7 @@ function Signup() {
       setError("Password must be at least 6 characters long.");
       return;
     }
+
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
       return;
@@ -54,7 +55,7 @@ function Signup() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center min-h-screen bg-gray-900">
       <div className="w-full max-w-md bg-gray-800 p-8 space-y-6 rounded-lg shadow-lg">
         <h2 className="text-center text-3xl font-extrabold text-white">
           Create your account
@@ -78,7 +79,7 @@ function Signup() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Enter your full name"
               />
             </div>
@@ -97,7 +98,7 @@ function Signup() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Enter your email"
               />
             </div>
@@ -116,7 +117,7 @@ function Signup() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Enter your password"
               />
             </div>
@@ -135,7 +136,7 @@ function Signup() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Confirm your password"
               />
             </div>
@@ -157,7 +158,7 @@ function Signup() {
             Already have an account?{" "}
             <a
               href="#"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/Login")}
               className="font-medium text-indigo-400 hover:text-indigo-300"
             >
               Sign in

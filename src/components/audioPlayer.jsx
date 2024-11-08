@@ -18,16 +18,9 @@ const AudioPlayer = ({ podcast }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [likes, setLikes] = useState(podcast.likes || 0);
-  const [views, setViews] = useState(podcast.views || 0);
   const [isLiked, setIsLiked] = useState(false);
 
   const audioRef = useRef(null);
-
-  useEffect(() => {
-    if (isPlaying && views === podcast.views) {
-      incrementViews();
-    }
-  }, [isPlaying]);
 
   const togglePlayPause = () => {
     if (isPlaying) {
@@ -66,8 +59,8 @@ const AudioPlayer = ({ podcast }) => {
       }
 
       const response = await axios.patch(
-        `http://localhost:8080/api/podcasts/likes/${podcast._id}`,
-        {}, // Pass an empty object for the request body
+        `https://podcastapp-back-end.onrender.com/api/podcasts/likes/${podcast._id}`,
+        {},
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -99,26 +92,25 @@ const AudioPlayer = ({ podcast }) => {
       );
 
       if (response.status === 200) {
-        toast.success("Podcast added to your playlist!"); // Show success notification
+        toast.success("Podcast added to your playlist!");
       }
     } catch (error) {
       console.error("Error adding podcast to playlist", error);
-      toast.error("Failed to add podcast to playlist"); // Show error notification
+      toast.error("Failed to add podcast to playlist");
     }
   };
 
   return (
-    <div className="player bg-gray-900 text-white h-full flex flex-col items-center justify-center">
-      <ToastContainer /> {/* Toast container for notifications */}
-      <div className="text-center">
-        <h2 className="text-2xl mb-4">{podcast.title}</h2>
+    <div className="player bg-gray-900 text-white h-full flex flex-col items-center justify-center p-4">
+      <ToastContainer />
+      <div className="text-center mb-4">
+        <h2 className="text-2xl">{podcast.title}</h2>
         <img
           src={podcast.imageUrl}
           alt="Podcast cover"
-          className="h-96 w-96 bg-white text-black"
+          className="h-48 w-48 md:h-96 md:w-96 object-cover mb-4"
         />
-        <p className="text-sm text-gray-400 mb-4">{podcast.author}</p>
-        <p className="text-sm text-gray-400 mb-4">{views} views</p>
+        <p className="text-sm text-gray-400">{podcast.author}</p>
 
         <audio
           ref={audioRef}
@@ -129,40 +121,36 @@ const AudioPlayer = ({ podcast }) => {
         />
       </div>
 
-      <div className="flex gap-10 items-center">
+      <div className="flex flex-wrap gap-5 justify-center items-center mb-4">
         <AiFillLike
           className={`h-10 w-10 hover:cursor-pointer ${isLiked ? "text-blue-500" : ""}`}
           onClick={toggleLike}
         />
         <p>{likes} Likes</p>
-        <IoIosArrowBack className="h-16 w-16 hover:cursor-pointer" onClick={() => handleSeek("backward")} />
+        <IoIosArrowBack className="h-12 w-12 hover:cursor-pointer" onClick={() => handleSeek("backward")} />
         <div onClick={togglePlayPause}>
           {isPlaying ? (
-            <MdMotionPhotosPaused className="h-16 w-16 hover:cursor-pointer" />
+            <MdMotionPhotosPaused className="h-12 w-12 hover:cursor-pointer" />
           ) : (
-            <MdPlayArrow className="h-16 w-16 hover:cursor-pointer" />
+            <MdPlayArrow className="h-12 w-12 hover:cursor-pointer" />
           )}
         </div>
-        <IoIosArrowForward className="h-16 w-16 hover:cursor-pointer" onClick={() => handleSeek("forward")} />
-        <a href={podcast.audioUrl} download>
-          <GoDownload className="h-10 w-10 hover:cursor-pointer" />
-        </a>
-        <CiMenuKebab className="h-10 w-10 hover:cursor-pointer" />
-        
-        <MdOutlineLibraryAdd className="h-10 w-10 hover:cursor-pointer" 
-        onClick={addtoPlayList}/>
+        <IoIosArrowForward className="h-12 w-12 hover:cursor-pointer" onClick={() => handleSeek("forward")} />
+        <MdOutlineLibraryAdd className="h-10 w-10 hover:cursor-pointer" onClick={addtoPlayList} />
       </div>
 
-      <div className="w-full flex items-center mt-4 px-10">
-        <span className="text-sm">{formatTime(currentTime)}</span>
+      <div className="w-full">
+        <p>
+          {formatTime(currentTime)} / {formatTime(duration)}
+        </p>
         <input
           type="range"
-          className="mx-4 flex-grow"
-          value={currentTime}
+          min="0"
           max={duration}
+          value={currentTime}
           onChange={(e) => (audioRef.current.currentTime = e.target.value)}
+          className="w-full h-1 accent-gray-700 cursor-pointer"
         />
-        <span className="text-sm">{formatTime(duration)}</span>
       </div>
     </div>
   );

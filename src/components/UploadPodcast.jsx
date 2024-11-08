@@ -6,7 +6,7 @@ const UploadPodcast = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [audioFile, setAudioFile] = useState(null);
-  const [imageFile, setImageFile] = useState(null);  
+  const [imageFile, setImageFile] = useState(null);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
@@ -21,34 +21,34 @@ const UploadPodcast = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     if (!audioFile || !imageFile) {
       setError("Both audio and image files are required");
       return;
     }
-  
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("author", author);
     formData.append("audioFile", audioFile);
     formData.append("imageFile", imageFile);
-  
+
     try {
-      const token = localStorage.getItem("token");  
+      const token = localStorage.getItem("token");
       const response = await axios.post(
         "https://podcastapp-back-end.onrender.com/api/podcasts/upload",
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-  
+
       setSuccess(response.data.message);
       setError(null);
-  
+
       if (response.data.message === "Podcast uploaded successfully") {
         navigate("/Home");
         setTitle("");
@@ -64,7 +64,7 @@ const UploadPodcast = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center min-h-screen bg-gray-900">
       <div className="w-full max-w-md bg-gray-800 p-8 space-y-6 rounded-lg shadow-lg">
         <h2 className="text-center text-3xl font-extrabold text-white">
           Upload Podcast
@@ -76,7 +76,7 @@ const UploadPodcast = () => {
         <form
           onSubmit={handleSubmit}
           className="mt-8 space-y-4"
-          enctype="multipart/form-data"
+          encType="multipart/form-data"
         >
           <div className="rounded-md shadow-sm space-y-4">
             <div>
@@ -89,7 +89,7 @@ const UploadPodcast = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Enter Podcast title"
               />
             </div>
@@ -104,7 +104,7 @@ const UploadPodcast = () => {
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Enter author's name"
               />
             </div>
@@ -119,7 +119,7 @@ const UploadPodcast = () => {
                 accept="audio/*"
                 onChange={handleAudioChange}
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
 
@@ -133,7 +133,7 @@ const UploadPodcast = () => {
                 accept="image/*"
                 onChange={handleImageChange}
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
           </div>

@@ -6,14 +6,14 @@ const Home = () => {
   const [currentPodcast, setCurrentPodcast] = useState(null);
 
   return (
-    <>
-      <section className="h-[100%] fixed left-0 overflow-auto touch-auto">
+    <div className="flex flex-col md:flex-row h-full">
+      <section className="w-full md:w-1/4 overflow-auto">
         <SideList setCurrentPodcast={setCurrentPodcast} />
       </section>
-      <section className="h-[100%] w-3/4 fixed right-0 overflow-auto touch-auto">
+      <section className="w-full md:w-3/4 overflow-auto">
         <AudioPlayer podcast={currentPodcast} />
       </section>
-    </>
+    </div>
   );
 };
 

@@ -32,16 +32,16 @@ function SideList({ setCurrentPodcast }) {
   );
 
   return (
-    <div className="sidebar bg-black h-[100%] w-1/4 text-white overflow-auto touch-auto fixed">
+    <div className="sidebar bg-black w-full h-full text-white overflow-auto p-4">
       <div className="bg-black text-white">
-        <div className="flex justify-center h-12 p-2 sticky top-2 backdrop-blur-sm">
+        <div className="flex justify-center h-12 p-2 sticky top-0 backdrop-blur-sm">
           <SearchBar onSearchChange={setSearchQuery} />
         </div>
         <hr className="bg-white" />
         <div className="text-white">
           {filteredPodcasts.map((podcast) => (
             <div
-              className="flex items-center my-2 p-2 w-[95%] rounded-3xl bg-gray-800 hover:bg-gray-700 cursor-pointer"
+              className="flex items-center my-2 p-2 w-full rounded-3xl bg-gray-800 hover:bg-gray-700 cursor-pointer"
               key={podcast._id}
               onClick={() => setCurrentPodcast(podcast)}
             >
@@ -49,7 +49,7 @@ function SideList({ setCurrentPodcast }) {
                 src={podcast.imageUrl}
                 className="w-12 h-12 object-cover rounded-full border"
               />
-              <div className="ml-4">
+              <div className="ml-4 flex-grow">
                 <p className="text-lg font-semibold">{podcast.title}</p>
                 <p className="text-sm text-gray-400">{podcast.author}</p>
               </div>
