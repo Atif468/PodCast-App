@@ -37,7 +37,6 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Menu */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)} 
           className="md:hidden text-white"
@@ -46,7 +45,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
         <div className="md:hidden bg-gray-700 text-white space-y-4 py-4 px-6">
           {isLoggedIn ? (
