@@ -25,22 +25,37 @@ function WhyListenPodcast() {
   ];
 
   return (
-    <div className="relative text-white py-12 px-6">
-      <h2 className="text-4xl font-bold text-center mb-4">
-        Why Listen to Podcasts on Our Platform?
-      </h2>
-      <p className="text-center mb-10 max-w-xl mx-auto">
-        Discover the ultimate platform for podcast listeners, designed to enhance your experience and keep you engaged.
-      </p>
+    <div className="relative text-neutral-200 py-24 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center space-y-6 mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+            Why Listen to Podcasts on Our Platform?
+          </h2>
+          <p className="text-xl md:text-3xl text-neutral-400 max-w-3xl mx-auto">
+            Discover the ultimate platform for podcast listeners, designed to enhance your experience and keep you engaged.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
-        {benefits.map((benefit, index) => (
-          <div key={index} className="bg-white text-black rounded-lg shadow-lg p-2 text-center relative">
-            <img src={benefit.imgSrc} alt={benefit.title} className="w-[98%] h-[60%] bg-cover rounded-lg mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2 z-50">{benefit.title}</h3>
-            <p className="z-50">{benefit.description}</p>
-          </div>
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {benefits.map((benefit, index) => (
+            <div 
+              key={index} 
+              className="group bg-neutral-900 hover:bg-neutral-800 transition-all duration-300 rounded-xl overflow-hidden shadow-xl"
+            >
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={benefit.imgSrc} 
+                  alt={benefit.title} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6 space-y-3">
+                <h3 className="text-xl font-semibold">{benefit.title}</h3>
+                <p className="text-neutral-400">{benefit.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

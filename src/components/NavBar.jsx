@@ -12,8 +12,7 @@ const Navbar = () => {
     <nav className="bg-black h-20 p-4 sticky top-0 z-50 ">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <img src="/logo.png" alt="PodCast Logo" className="h-8 w-8" />
-          <Link to="/" className="text-white text-3xl ml-2">
+           <Link to="/" className="text-white pacifico-regular  text-3xl ml-2">
             PodCast.in
           </Link>
         </div>

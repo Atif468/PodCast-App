@@ -18,7 +18,8 @@ function Login() {
     try {
       setLoading(true);
 
-      const response = await axios.post("https://podcastapp-back-end.onrender.com/api/user/login", 
+      const response = await axios.post(
+        "https://podcastapp-back-end.onrender.com/api/user/login",
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -43,9 +44,9 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900">
+    <div className="flex justify-center items-center min-h-screen bg-neutral-900">
       {loading && <h1 className="text-white text-xl">Loading...</h1>}
-      <div className="w-full max-w-md bg-gray-800 p-6 sm:p-8 space-y-6 rounded-lg shadow-lg">
+      <div className="w-full max-w-md bg-neutral-800 p-6 sm:p-8 space-y-6 rounded-lg shadow-lg">
         <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-white">
           Sign in to your account
         </h2>
@@ -54,7 +55,10 @@ function Login() {
         <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-neutral-300"
+              >
                 Email address
               </label>
               <input
@@ -64,13 +68,16 @@ function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-neutral-700 text-neutral-300 border border-neutral-600 placeholder-neutral-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Enter your email"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-300">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-neutral-300"
+              >
                 Password
               </label>
               <input
@@ -80,7 +87,7 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-neutral-700 text-neutral-300 border border-neutral-600 placeholder-neutral-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Enter your password"
               />
             </div>
@@ -92,15 +99,21 @@ function Login() {
                 id="remember_me"
                 name="remember_me"
                 type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-600 rounded"
+                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-neutral-600 rounded"
               />
-              <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-300">
+              <label
+                htmlFor="remember_me"
+                className="ml-2 block text-sm text-neutral-300"
+              >
                 Remember me
               </label>
             </div>
 
             <div className="text-sm">
-              <Link to="#" className="font-medium text-indigo-400 hover:text-indigo-300">
+              <Link
+                to="#"
+                className="font-medium text-indigo-400 hover:text-indigo-300"
+              >
                 Forgot your password?
               </Link>
             </div>
@@ -118,9 +131,12 @@ function Login() {
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-neutral-400">
             Don't have an account?{" "}
-            <Link to="/Signup" className="font-medium text-indigo-400 hover:text-indigo-300">
+            <Link
+              to="/Signup"
+              className="font-medium text-indigo-400 hover:text-indigo-300"
+            >
               Sign up
             </Link>
           </p>

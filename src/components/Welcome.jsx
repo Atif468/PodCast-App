@@ -8,7 +8,7 @@ function Welcome() {
           <i className="text-3xl md:text-4xl z-50 ">Welcome to</i>
           <i className="text-6xl md:text-8xl font-bold block z-50 ">
             <span className="underline">PodCast.</span>
-            <span className="opacity-35 z-60">in</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 mb-6 hover:scale-105 transition-transform duration-300">in</span>
           </i>
           <i className="text-sm md:text-lg block mt-4">
             Discover powerful podcasts and stories that resonate with your

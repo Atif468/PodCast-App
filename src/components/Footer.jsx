@@ -3,26 +3,37 @@ import { SiLeetcode, SiGeeksforgeeks } from 'react-icons/si';
 
 function Footer() {
   return (
-    <div className="bg-black text-white text-center py-6">
-      
-      <div className="flex justify-center space-x-6 z-50">
-        <a href="https://github.com/Atif468" target="_blank" rel="noopener noreferrer" className="z-50 hover:text-gray-400 hover:cursor-pointer">
-          <FaGithub size={24} />
-        </a>
-        <a href="https://www.linkedin.com/in/atif468" target="_blank" rel="noopener noreferrer" className="z-50 hover:text-blue-500 hover:cursor-pointer">
-          <FaLinkedin size={24} />
-        </a>
-        <a href="https://leetcode.com/u/Atif_2005" target="_blank" rel="noopener noreferrer" className="z-50 hover:text-yellow-500 hover:cursor-pointer">
-          <SiLeetcode size={24} />
-        </a>
-        <a href="https://www.geeksforgeeks.org/user/atifans468/" target="_blank" rel="noopener noreferrer" className="z-50 hover:text-green-500 hover:cursor-pointer">
-          <SiGeeksforgeeks size={24} />
-        </a>
-        <a href="https://www.hackerrank.com/profile/Atif_22015001907" target="_blank" rel="noopener noreferrer" className="z-50 hover:text-green-300 hover:cursor-pointer">
-          <FaHackerrank size={24} />
-        </a>
+    <footer className="text-white py-8">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex justify-center space-x-8">
+            <a href="https://github.com/Atif468" target="_blank" rel="noopener noreferrer" 
+               className="transform hover:scale-110 transition-transform duration-200 hover:text-gray-400">
+              <FaGithub size={28} />
+            </a>
+            <a href="https://www.linkedin.com/in/atif468" target="_blank" rel="noopener noreferrer"
+               className="transform hover:scale-110 transition-transform duration-200 hover:text-blue-500">
+              <FaLinkedin size={28} />
+            </a>
+            <a href="https://leetcode.com/u/Atif_2005" target="_blank" rel="noopener noreferrer"
+               className="transform hover:scale-110 transition-transform duration-200 hover:text-yellow-500">
+              <SiLeetcode size={28} />
+            </a>
+            <a href="https://www.geeksforgeeks.org/user/atifans468/" target="_blank" rel="noopener noreferrer"
+               className="transform hover:scale-110 transition-transform duration-200 hover:text-green-500">
+              <SiGeeksforgeeks size={28} />
+            </a>
+            <a href="https://www.hackerrank.com/profile/Atif_22015001907" target="_blank" rel="noopener noreferrer"
+               className="transform hover:scale-110 transition-transform duration-200 hover:text-green-300">
+              <FaHackerrank size={28} />
+            </a>
+          </div>
+          <div className="mt-4 text-gray-400 text-sm">
+            <p>© {new Date().getFullYear()} PodCast-App. All rights reserved.</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 }
 
