@@ -9,12 +9,10 @@ function Profile() {
   const [savedPodcasts, setSavedPodcasts] = useState([]);
   const [ownPodcasts, setOwnPodcasts] = useState([]);
 
-  const api = process.env.END_POINT;
-
   const getdata = async (podcastId) => {
     try {
       const result = await axios.get(
-        `${api}/podcasts/Podcast/${podcastId}`
+        `https://podcastapp-back-end.onrender.com/api/podcasts/Podcast/${podcastId}`
       );
       return result.data;
     } catch (err) {
@@ -33,7 +31,7 @@ function Profile() {
 
         // Fetch user info
         const response = await axios.get(
-          `${api}/user/userinfo`,
+          `https://podcastapp-back-end.onrender.com/api/user/userinfo`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -80,106 +78,126 @@ function Profile() {
   };
 
   return (
-    <>
-      <div className="bg-black min-h-screen text-white flex flex-col items-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         {error ? (
-          <p>{error}</p>
+          <div className="text-red-500 text-center text-xl">{error}</div>
         ) : userData ? (
-          <div className="flex flex-col md:flex-row items-center w-full max-w-4xl p-5">
-            <img
-              src={
-                userData.profilePicture ||
-                "https://img.freepik.com/premium-photo/3d-avatar-boy-character_914455-603.jpg"
-              }
-              alt="Profile"
-              className="h-44 w-44 rounded-full"
-            />
-            <div className="md:ml-8 text-center md:text-left mt-4 md:mt-0">
-              <h1 className="text-4xl font-bold">{userData.name}</h1>
-              <p className="text-lg text-gray-400">{userData.email}</p>
+          <div className="backdrop-blur-lg bg-black/30 rounded-3xl p-8 shadow-2xl">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-100 transition duration-1000"></div>
+                <img
+                  src={userData.profilePicture || "https://img.freepik.com/premium-photo/3d-avatar-boy-character_914455-603.jpg"}
+                  alt="Profile"
+                  className="relative h-48 w-48 rounded-full object-cover border-4 border-white/20"
+                />
+              </div>
+              <div className="text-center md:text-left space-y-2">
+                <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
+                  {userData.name}
+                </h1>
+                <p className="text-xl text-gray-400">{userData.email}</p>
+              </div>
             </div>
           </div>
         ) : (
-          <p>Loading user data...</p>
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500 mx-auto"></div>
+            <p className="mt-4 text-white text-xl">Loading user data...</p>
+          </div>
         )}
 
-        <div className="flex justify-around w-full max-w-4xl text-3xl mt-4">
-          <button
-            onClick={() => handleSectionChange("liked")}
-            className={`hover:text-gray-400 ${
-              section === "liked" ? "font-bold border-b-2 border-gray-400" : ""
-            }`}
-          >
-            Liked
-          </button>
-          <button
-            onClick={() => handleSectionChange("saved")}
-            className={`hover:text-gray-400 ${
-              section === "saved" ? "font-bold border-b-2 border-gray-400" : ""
-            }`}
-          >
-            Saved/Playlist
-          </button>
-          <button
-            onClick={() => handleSectionChange("ownPodcast")}
-            className={`hover:text-gray-400 ${
-              section === "ownPodcast"
-                ? "font-bold border-b-2 border-gray-400"
-                : ""
-            }`}
-          >
-            Own Podcast
-          </button>
+        <div className="flex justify-center gap-8 mt-12 mb-8">
+          {['liked', 'saved', 'ownPodcast'].map((type) => (
+            <button
+              key={type}
+              onClick={() => handleSectionChange(type)}
+              className={`px-6 py-2 rounded-full transition-all duration-300 ${
+                section === type
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold scale-105'
+                  : 'bg-gray-800 hover:bg-gray-700 text-gray-300'
+              }`}
+            >
+              {type === 'liked' ? 'Liked' : type === 'saved' ? 'Saved/Playlist' : 'Own Podcast'}
+            </button>
+          ))}
         </div>
 
-        <div className="w-full max-w-4xl mt-6 px-4">
+        <div className="mt-8">
           {section === "liked" && likedPodcasts.length > 0 ? (
             <PodcastList title="Liked Podcasts" podcasts={likedPodcasts} />
           ) : section === "liked" ? (
-            <p>No liked podcasts found.</p>
+            <EmptyState message="No liked podcasts found" />
           ) : null}
 
           {section === "saved" && savedPodcasts.length > 0 ? (
             <PodcastList title="Saved/Playlist Podcasts" podcasts={savedPodcasts} />
           ) : section === "saved" ? (
-            <p>No saved podcasts found.</p>
+            <EmptyState message="No saved podcasts found" />
           ) : null}
 
           {section === "ownPodcast" && ownPodcasts.length > 0 ? (
             <PodcastList title="Your Created Podcasts" podcasts={ownPodcasts} />
           ) : section === "ownPodcast" ? (
-            <p>No podcasts created by you found.</p>
+            <EmptyState message="No podcasts created by you found" />
           ) : null}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
 function PodcastList({ title, podcasts }) {
   return (
     <div>
-      <h2 className="text-2xl font-bold mt-5">{title}:</h2>
-      {podcasts.map((podcast) => (
-        <div
-          className="flex items-center my-3 p-4 rounded-3xl border hover:bg-gray-700 transition-shadow shadow-lg hover:shadow-2xl   cursor-pointer"
-          key={podcast._id}
-        >
-          <img
-            src={podcast.imageUrl}
-            className="w-16 h-16 object-cover bg-red-300 rounded-full border border-gray-600"
-            alt={podcast.title}
-          />
-          <div className="ml-4 flex-1">
-            <p className="text-lg font-semibold">{podcast.title}</p>
-            <p className="text-sm text-gray-400">{podcast.author}</p>
+      <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">{title}</h2>
+      <div className="grid gap-4">
+        {podcasts.map((podcast) => (
+          <div
+            key={podcast._id}
+            className="group relative backdrop-blur-sm bg-white/5 rounded-2xl p-4 transition-all duration-300 hover:scale-[1.02] hover:bg-white/10"
+          >
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-100 transition duration-1000"></div>
+                <img
+                  src={podcast.imageUrl}
+                  className="relative w-20 h-20 object-cover rounded-full border-2 border-white/20"
+                  alt={podcast.title}
+                />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold text-white group-hover:text-purple-300 transition-colors">
+                  {podcast.title}
+                </h3>
+                <p className="text-gray-400">{podcast.author}</p>
+              </div>
+              <div className="text-right space-y-1">
+                <p className="text-purple-400">
+                  <span className="text-sm text-gray-400">Likes:</span> {podcast.likes}
+                </p>
+                <p className="text-pink-400">
+                  <span className="text-sm text-gray-400">Views:</span> {podcast.views}
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="ml-auto text-right text-sm text-gray-400">
-            <p>Likes: {podcast.likes}</p>
-            <p>Views: {podcast.views}</p>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function EmptyState({ message }) {
+  return (
+    <div className="text-center py-12">
+      <div className="w-24 h-24 mx-auto mb-4 text-gray-500">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+      </div>
+      <p className="text-xl text-gray-400">{message}</p>
     </div>
   );
 }

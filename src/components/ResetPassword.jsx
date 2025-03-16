@@ -55,35 +55,37 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-bold text-center">Reset Password</h2>
-        {error && <p className="text-red-500 text-center">{error}</p>}
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#1a1a1a]">
+      <div className="bg-[#2d2d2d] p-8 rounded-lg shadow-xl w-96">
+        <h2 className="text-2xl font-bold  text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 text-center mb-6">Reset Password</h2>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         {success ? (
           <p className="text-green-500 text-center">Password reset successful! Redirecting...</p>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-semibold">New Password</label>
+              <label className="block text-sm font-semibold text-gray-300 mb-2">New Password</label>
               <input
                 type="password"
-                className="w-full p-2 border rounded"
+                className="w-full p-3 bg-[#3d3d3d] text-white border border-gray-600 rounded-lg focus:outline-none focus:border-purple-500"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold">Confirm Password</label>
+              <label className="block text-sm font-semibold text-gray-300 mb-2">Confirm Password</label>
               <input
                 type="password"
-                className="w-full p-2 border rounded"
+                className="w-full p-3 bg-[#3d3d3d] text-white border border-gray-600 rounded-lg focus:outline-none focus:border-purple-500"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
             </div>
-            <button className="w-full bg-blue-500 text-white p-2 rounded">Reset Password</button>
+            <button className="w-full bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-lg transition duration-200">
+              Reset Password
+            </button>
           </form>
         )}
       </div>

@@ -11,8 +11,6 @@ function Signup() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const api = process.env.END_POINT;
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -57,9 +55,9 @@ function Signup() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900">
-      <div className="w-full max-w-md bg-gray-800 p-8 space-y-6 rounded-lg shadow-lg">
-        <h2 className="text-center text-3xl font-extrabold text-white">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900">
+      <div className="w-full max-w-md bg-black/70 backdrop-blur-sm p-8 space-y-6 rounded-lg shadow-lg">
+        <h2 className="text-center text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
           Create your account
         </h2>
 
@@ -70,7 +68,7 @@ function Signup() {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-300"
+                className="block text-sm font-medium text-neutral-300"
               >
                 Full Name
               </label>
@@ -81,7 +79,7 @@ function Signup() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-lg block w-full px-4 py-3 bg-neutral-700/50 text-neutral-100 border border-neutral-600 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
                 placeholder="Enter your full name"
               />
             </div>
@@ -89,7 +87,7 @@ function Signup() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-300"
+                className="block text-sm font-medium text-neutral-300"
               >
                 Email address
               </label>
@@ -100,7 +98,7 @@ function Signup() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-lg block w-full px-4 py-3 bg-neutral-700/50 text-neutral-100 border border-neutral-600 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
                 placeholder="Enter your email"
               />
             </div>
@@ -108,7 +106,7 @@ function Signup() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-300"
+                className="block text-sm font-medium text-neutral-300"
               >
                 Password
               </label>
@@ -119,7 +117,7 @@ function Signup() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-lg block w-full px-4 py-3 bg-neutral-700/50 text-neutral-100 border border-neutral-600 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
                 placeholder="Enter your password"
               />
             </div>
@@ -127,7 +125,7 @@ function Signup() {
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-300"
+                className="block text-sm font-medium text-neutral-300"
               >
                 Confirm Password
               </label>
@@ -138,7 +136,7 @@ function Signup() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
-                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-lg block w-full px-4 py-3 bg-neutral-700/50 text-neutral-100 border border-neutral-600 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
                 placeholder="Confirm your password"
               />
             </div>
@@ -156,7 +154,7 @@ function Signup() {
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-neutral-400">
             Already have an account?{" "}
             <a
               href="#"

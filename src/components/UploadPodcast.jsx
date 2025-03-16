@@ -64,14 +64,14 @@ const UploadPodcast = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900">
-      <div className="w-full max-w-md bg-gray-800 p-8 space-y-6 rounded-lg shadow-lg">
-        <h2 className="text-center text-3xl font-extrabold text-white">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900">
+      <div className="w-full max-w-md p-8 space-y-6 bg-black/70 backdrop-blur-sm rounded-xl shadow-lg">
+        <h2 className="text-center text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
           Upload Podcast
         </h2>
 
-        {error && <p className="text-red-500 text-center">{error}</p>}
-        {success && <p className="text-green-500 text-center">{success}</p>}
+        {error && <p className="text-red-300 text-center">{error}</p>}
+        {success && <p className="text-green-300 text-center">{success}</p>}
 
         <form
           onSubmit={handleSubmit}
@@ -80,7 +80,7 @@ const UploadPodcast = () => {
         >
           <div className="rounded-md shadow-sm space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300">
+              <label className="block text-sm font-medium text-white">
                 Title
               </label>
               <input
@@ -89,13 +89,13 @@ const UploadPodcast = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
-                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-white bg-opacity-10 text-white border border-gray-300 border-opacity-20 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent sm:text-sm"
                 placeholder="Enter Podcast title"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300">
+              <label className="block text-sm font-medium text-white">
                 Author
               </label>
               <input
@@ -104,13 +104,13 @@ const UploadPodcast = () => {
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
                 required
-                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-white bg-opacity-10 text-white border border-gray-300 border-opacity-20 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent sm:text-sm"
                 placeholder="Enter author's name"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300">
+              <label className="block text-sm font-medium text-white">
                 Audio File
               </label>
               <input
@@ -119,12 +119,12 @@ const UploadPodcast = () => {
                 accept="audio/*"
                 onChange={handleAudioChange}
                 required
-                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-white bg-opacity-10 text-white border border-gray-300 border-opacity-20 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent sm:text-sm"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300">
+              <label className="block text-sm font-medium text-white">
                 Image File
               </label>
               <input
@@ -133,7 +133,7 @@ const UploadPodcast = () => {
                 accept="image/*"
                 onChange={handleImageChange}
                 required
-                className="appearance-none rounded-md block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 bg-white bg-opacity-10 text-white border border-gray-300 border-opacity-20 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent sm:text-sm"
               />
             </div>
           </div>
@@ -141,7 +141,7 @@ const UploadPodcast = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-300"
             >
               Upload Podcast
             </button>
@@ -149,11 +149,11 @@ const UploadPodcast = () => {
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-white">
             Need to go back?{" "}
             <Link
               to="/Home"
-              className="font-medium text-indigo-400 hover:text-indigo-300"
+              className="font-medium text-purple-300 hover:text-purple-200 transition-colors duration-300"
             >
               Go Home
             </Link>
