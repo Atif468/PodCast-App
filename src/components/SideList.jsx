@@ -8,7 +8,7 @@ function SideList({ setCurrentPodcast }) {
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
-        const response = await fetch("https://podcastapp-back-end.onrender.com/api/podcasts/data");
+        const response = await fetch(`https://podcastapp-back-end.onrender.com/api/podcasts/data`);
         const result = await response.json();
 
         if (Array.isArray(result.data)) {

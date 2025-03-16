@@ -14,23 +14,23 @@ function LandingPage() {
   return (
     <div className="relative min-h-screen bg-black">
       {/* Canvas positioned absolute and set to the background */}
-      <canvas id="fluid" className="fixed top-0 left-0 w-screen h-screen -z-0" />
+      <canvas id="fluid" className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-10" />
       
       {/* Main content container */}
-      <div className="relative z-50">
-        <section className="min-h-screen">
+      <div className="relative z-20">
+        <section className="min-h-screen pointer-events-auto">
           <Welcome />
         </section>
         
-        <section className="min-h-screen">
+        <section className="min-h-screen pointer-events-auto">
           <Whypodcast />
         </section>
         
-        <section className="min-h-screen">
+        <section className="min-h-screen pointer-events-auto">
           <WhyListenPodcast />
         </section>
         
-        <section className="min-h-screen z-50">
+        <section className="min-h-screen pointer-events-auto">
           <Aboutus />
         </section>
         

@@ -7,6 +7,7 @@ import LandingPage from "./pages/LandingPage";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import UploadPodcast from "./components/UploadPodcast";
+import ResetPassword from "./components/ResetPassword";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/Home" element={<Home />} />
             <Route path="/UploadPodCast" element={<UploadPodcast />} />
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
           </Routes>
         </div>
       </div>

@@ -8,7 +8,7 @@ function PlaylistManager({ podcastId }) {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "https://podcastapp-back-end.onrender.com/api/user/playlists",
+        `https://podcastapp-back-end.onrender.com/api/user/playlists`,
         { playlistName, podcastId },
         { headers: { Authorization: `Bearer ${token}` } }
       );

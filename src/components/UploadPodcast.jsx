@@ -36,7 +36,7 @@ const UploadPodcast = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "https://podcastapp-back-end.onrender.com/api/podcasts/upload",
+        `https://podcastapp-back-end.onrender.com/api/podcasts/upload`,
         formData,
         {
           headers: {

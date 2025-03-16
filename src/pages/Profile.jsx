@@ -9,10 +9,12 @@ function Profile() {
   const [savedPodcasts, setSavedPodcasts] = useState([]);
   const [ownPodcasts, setOwnPodcasts] = useState([]);
 
+  const api = process.env.END_POINT;
+
   const getdata = async (podcastId) => {
     try {
       const result = await axios.get(
-        `https://podcastapp-back-end.onrender.com/api/podcasts/Podcast/${podcastId}`
+        `${api}/podcasts/Podcast/${podcastId}`
       );
       return result.data;
     } catch (err) {
@@ -31,7 +33,7 @@ function Profile() {
 
         // Fetch user info
         const response = await axios.get(
-          "https://podcastapp-back-end.onrender.com/api/user/userinfo",
+          `${api}/user/userinfo`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -11,6 +11,8 @@ function Signup() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const api = process.env.END_POINT;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -33,7 +35,7 @@ function Signup() {
     try {
       setLoading(true);
       const response = await axios.post(
-        "https://podcastapp-back-end.onrender.com/api/user/signup",
+        `https://podcastapp-back-end.onrender.com/api/user/signup`,
         { name, email, password },
         {
           headers: {
