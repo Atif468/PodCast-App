@@ -31,6 +31,7 @@ function App() {
             <Route path="/UploadPodCast" element={<UploadPodcast />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
+
           </Routes>
         </div>
       </div>
