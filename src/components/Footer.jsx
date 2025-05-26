@@ -6,7 +6,7 @@ function Footer() {
     <footer className="text-white py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center gap-4">
-          <div className="flex justify-center space-x-8">
+{/*           <div className="flex justify-center space-x-8">
             <a href="https://github.com/Atif468" target="_blank" rel="noopener noreferrer" 
                className="transform hover:scale-110 transition-transform duration-200 hover:text-gray-400">
               <FaGithub size={28} />
@@ -27,7 +27,7 @@ function Footer() {
                className="transform hover:scale-110 transition-transform duration-200 hover:text-green-300">
               <FaHackerrank size={28} />
             </a>
-          </div>
+          </div> */}
           <div className="mt-4 text-gray-400 text-sm">
             <p>© {new Date().getFullYear()} PodCast-App. All rights reserved.</p>
           </div>
